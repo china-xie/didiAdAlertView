@@ -22,27 +22,26 @@
     self.title = @"ADAlertView";
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.showBtn];
-_imgArr = [self setImgArr];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
--(NSMutableArray *)setImgArr{
+    
     NSMutableArray *arr = [[NSMutableArray alloc]initWithCapacity:0];
     for (int i = 1; i<=5; i++) {
         ADModel *adModel  = [[ADModel alloc]init];
-        adModel.imgStr      = [NSString stringWithFormat:@"%d",i];
+        adModel.imgStr      = [NSString stringWithFormat:@"%d.jpg",i];
         adModel.linkUrl     = @"https://www.baidu.com";
         [arr addObject:adModel];
     }
-    return arr;
+
+_imgArr = arr;
+  
 }
+
 -(UIButton*)showBtn{
     if (!_showBtn) {
         _showBtn        = [UIButton buttonWithType:UIButtonTypeCustom];
         _showBtn.center = self.view.center;
         _showBtn.bounds = CGRectMake(0, 0, 100, 60);
         [_showBtn setTitle:@"弹出广告" forState:UIControlStateNormal];
-        [_showBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        [_showBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_showBtn addTarget:self action:@selector(showAdAlertView) forControlEvents:UIControlEventTouchUpInside];
     }
     return _showBtn;

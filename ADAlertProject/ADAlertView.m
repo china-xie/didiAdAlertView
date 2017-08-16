@@ -31,13 +31,6 @@
 @property(nonatomic,assign)BOOL         hiddenPageControl;
 @end
 @implementation ADAlertView
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect {
- // Drawing code
- }
- */
 
 +(ADAlertView *)showInView:(UIView *)view theDelegate:(id)delegate theADInfo: (NSArray *)dataList placeHolderImage: (NSString *)placeHolderStr{
     if (!dataList) {
@@ -83,6 +76,7 @@
     [self.layer addAnimation:animation forKey:@"opacity"];
 }
 
+/// 移除广告手势
 -(void)removeFromCurrentView:(UIGestureRecognizer *)gesture
 {
     UIView * subView    = (UIView *)[self viewWithTag:99];
@@ -143,6 +137,8 @@
         item.index  = i;
         item.tag    = BaseTag+item.index;
         item.imageView.image      = [UIImage imageNamed:adModel.imgStr];
+        
+        
         UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapContentImgView:)];
         [item addGestureRecognizer:singleTap];
         [_scrollView addSubview:item];
@@ -174,6 +170,7 @@
         [self removeSelfFromSuperview];
     }
 }
+
 /// 当pageControl改变的时候，判断scrollView偏移
 -(void)pageValueChange:(UIPageControl*)page{
     
@@ -190,7 +187,7 @@
 
 @end
 
-/*********D*********Y**********分**********割**********线************/
+
 //自定义中间主界面
 @implementation ADItemView
 

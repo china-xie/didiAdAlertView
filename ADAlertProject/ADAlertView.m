@@ -128,6 +128,7 @@
         self.hiddenPageControl = YES;
     }
     [self addSubview:self.scrollView];
+    
     /// 图片
     for ( int i = 0; i < _itemsCount; i++ ) {
         
